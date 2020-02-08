@@ -1,0 +1,105 @@
+\documentclass[a4paper]{tufte-handout}
+
+\title[Test]{Test 00}
+\author[M.C.]{Miguel C.}
+\date % without \date command, current date is supplied
+
+%\geometry{showframe} % display margins for debugging page layout
+
+% micro adjustments
+\usepackage{microtype}
+
+% required for special glyphs
+%\usepackage[varqu,varl]{zi4}% inconsolata for mono, not LibertineMono
+
+\usepackage{etoolbox}
+\usepackage{graphicx} % allow embedded images
+  \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+  \graphicspath{{graphics/}} % set of paths to search for images
+\usepackage{booktabs} % book-quality tables
+\usepackage{units}    % non-stacked fractions and better unit spacing
+\usepackage{multicol} % multiple column layout facilities
+\usepackage{lipsum}   % filler text
+\usepackage{fancyvrb} % extended verbatim environments
+  \fvset{fontsize=\normalsize}% default font size for fancy-verbatim environments
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{tablefootnote}
+\usepackage{interval}
+\intervalconfig{soft  open  fences}
+
+% lining figures in tabular env
+\preto\tabular{\fontfamily{jkp}\selectfont}
+
+% The 'fancy' page style is the default style for all pages.
+\fancyhf{} % clear header and footer fields
+\ifthenelse{\boolean{@tufte@twoside}}
+  {\fancyhead[LE]{\thepage\quad\smallcaps{\newlinetospace{\plainauthor}}}%
+    \fancyhead[RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}}
+  {\fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}\quad\oldstylenums{\thepage}\enspace of\enspace} \oldstylenums{\pageref{LastPage}}}}
+
+% The `plain' page style is used on chapter opening pages.
+% In Tufte's /Beautiful Evidence/ he never puts page numbers at the
+% bottom of pages -- the folios are unexpressed.
+\fancypagestyle{plain}{
+  \fancyhf{} % clear header and footer fields
+    \ifthenelse{\boolean{@tufte@twoside}}
+    {\fancyhead[LE]{\thepage\quad\smallcaps{\newlinetospace{\plainauthor}}}%
+        \fancyhead[RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}}
+    {\fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}\quad\oldstylenums{\thepage}\enspace of\enspace} \oldstylenums{\pageref{LastPage}}}}
+
+  % Uncomment the following five lines of code if you want the opening page
+  % of the chapter to express the folio in the lower outside corner.
+  %\ifthenelse{\boolean{@tufte@twoside}}
+  %  {\fancyfoot[LE,RO]{\thepage}}
+  %  {\fancyfoot[RE,RO]{\thepage}}
+}
+
+% The `empty' page style suppresses all headers and footers.
+% It's used on title pages and `intentionally blank' pages.
+% \fancypagestyle{empty}{
+%   \fancyhf{} % clear header and footer fields
+%     \ifthenelse{\boolean{@tufte@twoside}}
+%     {\fancyhead[LE]{\thepage\quad\smallcaps{\newlinetospace{\plainauthor}}}%
+%         \fancyhead[RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}}
+%     {\fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage\enspace of\enspace\pageref{LastPage}}}
+% }\usepackage[charter, uppercase=upright]{mathdesi
+% 
+% Standardize command font styles and environments
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+\newcommand{\teacherspace}[0]{\vspace*{5em}}
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+
+\setcounter{secnumdepth}{2}
+\renewcommand*{\thesection}{Q.\arabic{section}}
+\renewcommand*{\thesubsection}{Q.\arabic{section}.\alph{subsection}}
+\begin{document}
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent
+Intro.
+\end{abstract}
+
+%%%%%% Q1
+\section{The question\dots}\label{sec:q1}
+\begin{abstract}
+\noindent
+Instructions
+\end{abstract}
+
+\subsection{Q1a.}\label{ssec:q1a}
+The answer.
+
+\teacherspace
+\pagebreak
+
+\nobibliography{}
+\end{document}

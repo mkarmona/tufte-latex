@@ -445,8 +445,9 @@
 
 \RequirePackage[letterpaper,left=1in,top=1in,headsep=2\baselineskip,textwidth=26pc,marginparsep=2pc,marginparwidth=12pc,textheight=44\baselineskip,headheight=\baselineskip]{geometry}
 
+% default left is 24.8mm so shrinking to 20.0mm
 \ifthenelse{\boolean{@tufte@afourpaper}}
-  {\geometry{a4paper,left=24.8mm,top=27.4mm,headsep=2\baselineskip,textwidth=107mm,marginparsep=8.2mm,marginparwidth=49.4mm,textheight=49\baselineskip,headheight=\baselineskip}}
+  {\geometry{a4paper,left=20.0mm,top=27.4mm,headsep=2\baselineskip,textwidth=107mm,marginparsep=8.2mm,marginparwidth=49.4mm,textheight=49\baselineskip,headheight=\baselineskip}}
   {}
 
 \ifthenelse{\boolean{@tufte@bfivepaper}}
@@ -1405,11 +1406,23 @@
 % installed.)
 
 \ifthenelse{\boolean{@tufte@loadfonts}\AND\NOT\boolean{@tufte@xetex}\AND\NOT\boolean{@tufte@luatex}}{%
-  \IfFileExists{mathpazo.sty}{\RequirePackage[osf,sc]{mathpazo}}{}
-  \IfFileExists{helvet.sty}{\RequirePackage[scaled=0.90]{helvet}}{}
-  \IfFileExists{beramono.sty}{\RequirePackage[scaled=0.85]{beramono}}{}
+  \usepackage[utf8]{inputenc}
+	%\usepackage{amsmath,mathtools,amssymb}
+	\usepackage{mathtools,amssymb}  
+	
+	%\IfFileExists{mathpazo.sty}{\RequirePackage[sc]{mathpazo}}{}
+	%\IfFileExists{helvet.sty}{\RequirePackage[scaled=0.90]{helvet}}{}
+	
+	%\usepackage[light,oldstylenums]{kpfonts}	
+	
+	\usepackage[oldstylenums]{kpfonts}	
+	
+	%\usepackage[charter, uppercase=upright]{mathdesign}
+	%\usepackage[charter]{mathdesign}
+	\IfFileExists{beramono.sty}{\RequirePackage[scaled=0.85]{beramono}}{}
+
   \RequirePackage[T1]{fontenc}
-  \RequirePackage{textcomp}
+  %\RequirePackage{textcomp}
 }{}
 
 
@@ -1636,7 +1649,7 @@
 
 \titleformat{\paragraph}%
   [runin]% shape
-  {\normalfont\itshape}% format applied to label+text
+  {\normalfont} %\itshape}% format applied to label+text
   {\theparagraph}% label
   {1em}% horizontal separation between label and title body
   {}% before the title body
